@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IndicatorService } from '../service/indicator.service';
+
 
 @Component({
   selector: 'app-indicator',
@@ -7,8 +8,9 @@ import { IndicatorService } from '../service/indicator.service';
   styleUrls: ['./indicator.component.scss']
 })
 export class IndicatorComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['year', 'indicator'];
   dataSource!: any[];
+
   constructor(private indicatorService: IndicatorService) { }
 
   ngOnInit(): void {
