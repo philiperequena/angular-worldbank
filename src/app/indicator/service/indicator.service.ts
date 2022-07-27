@@ -18,4 +18,12 @@ export class IndicatorService extends RestConsummerService{
         }));
   }
 
+
+  getAllIndicatorsByContry(code:string): Observable<ContryModel[]> {
+    return super.get<any[]>(`${SERVICE_PATH}/indicator/${code}`).pipe(
+        map((ob: any) => {
+          return ob.data;
+        }));
+  }
+
 }
