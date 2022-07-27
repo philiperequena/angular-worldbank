@@ -1,4 +1,15 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+<mat-form-field appearance="fill">
+  <mat-label>Select Country</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let country of countryOption" [value]="country.iso2Code">
+      {{country.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-button (click)="onSubmit()">Search</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource">
 
   <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

@@ -10,14 +10,20 @@ import { IndicatorService } from '../service/indicator.service';
 export class IndicatorComponent implements OnInit {
   displayedColumns: string[] = ['year', 'indicator'];
   dataSource!: any[];
+  countryOption!: any[];
+  selected!:string;
 
   constructor(private indicatorService: IndicatorService) { }
 
   ngOnInit(): void {
-    this.indicatorService.getAllIndicatorsByContry('BR').subscribe(d => {
-      this.dataSource = d;
-      console.log(this.dataSource);
+    this.indicatorService.getAllCountriesCodes().subscribe(d => {
+      this.countryOption = d;
     })
   }
 
+  onSubmit(){
+    this.indicatorService.getAllIndicatorsByContry(this.selected).subscribe(d => {
+      this.dataSource = d;
+    })
+  }
 }
